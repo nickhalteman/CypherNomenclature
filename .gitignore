@@ -1,0 +1,17 @@
+# Godot 4+ specific ignores
+.godot/
+.vs/
+**.gif
+**.meta
+**.ttf
+**.import
+**.png
+**.ico
+**.old
+**.pck
+**.tres
+**.svg
+**.tscn
+wordlist.txt
+data_CypherNomenclature_x86_64/
+ContentBuilder/

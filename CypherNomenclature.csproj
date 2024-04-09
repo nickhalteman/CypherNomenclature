@@ -1,0 +1,37 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.1.2">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Platforms>x64</Platforms>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="GameScripts\**" />
+    <EmbeddedResource Remove="GameScripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Steamworks.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Link>Steamworks.NET.dll</Link>
+      <HintPath Condition=" '$(OS)' == 'Windows_NT' ">Steamworks/Windows-x64/Steamworks.NET.dll</HintPath>
+      <HintPath Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'">Steamworks/OSX-Linux-x64/Steamworks.NET.dll</HintPath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Reference>
+    <Content Include="SteamRichPresence.txt" />
+
+    <Content Include="Steamworks/Windows-x64/steam_api64.dll" Condition=" '$(OS)' == 'Windows_NT' ">
+      <Link>steam_api64.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    
+    <Content Include="Steamworks/OSX-Linux-x64/steam_api.bundle/Contents/MacOS/libsteam_api.dylib" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'">
+      <Link>libsteam_api.dylib</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
+    
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="2.5.140" />
+  </ItemGroup>
+</Project>
